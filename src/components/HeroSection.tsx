@@ -406,4 +406,3 @@ export function HeroSection() {
     </section>
   );
 }
-Fri Dec 12 11:47:20 -03 2025
