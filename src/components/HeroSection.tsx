@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Search, MapPin, Building, Home, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -40,12 +40,21 @@ export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [categoria, setCategoria] = useState<string>("todos");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [videoError, setVideoError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const count500 = useCounter(500, 2000, 0);
   const count12 = useCounter(12, 2000, 0);
   const count98 = useCounter(98, 2000, 0);
 
   useEffect(() => {
     setIsVisible(true);
+  }, []);
+
+  useEffect(() => {
+    // Garantir que o vídeo tente carregar
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
   }, []);
 
   // Busca em tempo real
@@ -121,16 +130,29 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover object-center"
-          style={{ minWidth: '100%', minHeight: '100%' }}
-        >
-          <source src="/videos/Cria_um_video_202512111740.mp4" type="video/mp4" />
-        </video>
+        {!videoError ? (
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover object-center"
+            style={{ minWidth: '100%', minHeight: '100%' }}
+            onError={() => {
+              console.error('Erro ao carregar vídeo de fundo');
+              setVideoError(true);
+            }}
+            onLoadedData={() => {
+              console.log('Vídeo de fundo carregado com sucesso');
+            }}
+          >
+            <source src="/videos/Cria_um_video_202512111740.mp4" type="video/mp4" />
+          </video>
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-[#001F3F] via-[#003366] to-[#001F3F]" />
+        )}
         <div className="absolute inset-0 hero-gradient" />
       </div>
 
