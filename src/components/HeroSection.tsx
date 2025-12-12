@@ -160,7 +160,7 @@ export function HeroSection() {
             }
           }}
         >
-          <source src="/videos/Cria_um_video_202512111740.mp4" type="video/mp4" />
+          <source src="/Cria_um_video_202512111740.mp4" type="video/mp4" />
           Seu navegador não suporta vídeos HTML5.
         </video>
         <div className="absolute inset-0 hero-gradient" />

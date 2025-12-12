@@ -6,7 +6,7 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/((?!videos|images|pdfs|favicon.ico|robots.txt|assets|.*\\.(mp4|pdf|png|jpg|jpeg|svg|ico)).*)",
+      "source": "/((?!videos|images|pdfs|favicon.ico|robots.txt|assets|Cria_um_video_202512111740\\.mp4|.*\\.(mp4|pdf|png|jpg|jpeg|svg|ico)).*)",
       "destination": "/index.html"
     }
   ]
