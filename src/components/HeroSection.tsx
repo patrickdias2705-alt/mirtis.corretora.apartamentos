@@ -142,13 +142,33 @@ export function HeroSection() {
           muted
           playsInline
           preload="auto"
+          webkit-playsinline="true"
+          x5-playsinline="true"
           className="w-full h-full object-cover object-center"
-          style={{ minWidth: '100%', minHeight: '100%' }}
+          style={{ 
+            minWidth: '100%', 
+            minHeight: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%'
+          }}
           onError={(e) => {
             console.error('Erro ao carregar vídeo:', e);
+            const video = e.currentTarget;
+            console.error('Vídeo src:', video.src);
+            console.error('Vídeo networkState:', video.networkState);
           }}
           onLoadedData={() => {
             console.log('Vídeo carregado com sucesso');
+            if (videoRef.current) {
+              videoRef.current.play().catch((err) => {
+                console.warn('Erro ao reproduzir:', err);
+              });
+            }
+          }}
+          onCanPlay={() => {
             if (videoRef.current) {
               videoRef.current.play().catch(() => {});
             }
