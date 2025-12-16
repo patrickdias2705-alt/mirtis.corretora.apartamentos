@@ -6,7 +6,7 @@
   "framework": null,
   "rewrites": [
     {
-      "source": "/((?!assets|videos|images|pdfs|favicon.ico|robots.txt|placeholder.svg|Cria_um_video_202512111740\\.mp4|.*\\.(mp4|pdf|png|jpg|jpeg|svg|ico|js|css|woff|woff2|ttf|eot|webm)).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
