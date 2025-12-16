@@ -8,10 +8,6 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-
 # production
 /build
 /dist
@@ -27,13 +23,30 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+
+# Large files
+transfer-repo.bundle
+*.bundle
+
+# Next.js build
+.next/
 
 
 
